@@ -1,0 +1,95 @@
+.footer{
+    background: $footer__color;
+    border-top: 2px solid $light__gray;
+    width: 100%;
+    &__subscribe{
+        @include flex_align;
+        height: 195px;
+        background: $footer__color;
+        &-socmed, &-form{
+            @include flex_end;
+        }
+        &-form{
+            position: relative;
+            .email{
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 15px;
+                pointer-events: none;
+                color: $gray_color;
+            }
+        }
+        &--descr{
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        &--social{
+            width: 336px;
+            background: #fff;
+            height: 48px;
+            font-size: 18px;
+            &-items{
+                @include flex_align;
+                justify-content: space-around;
+                list-style: none;
+                padding-left: 0;
+                &:last-child{
+                    border-right: 2px solid $light__gray;
+                }
+                li{
+                    @include flex_align;
+                    justify-content: center;
+                    border: 2px solid $light__gray;
+                    border-right: none;
+                    width: 48px;
+                    height: 48px;
+                    cursor: pointer;
+                    transition: all .5s;
+                    a{
+                        color: $gray_color;
+                    }
+                    &:hover{
+                        background: $red_color;
+                        border: none;
+                        a{
+                            color:#fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__inpt{
+        width: 95%;
+        padding: 12px 35px 12px 20px;
+        font-size: 12px;
+        text-transform: uppercase;
+        outline: none;
+        border: 2px solid $light__gray;
+    }
+    &__cards{
+        background: $light__gray;
+        padding: 44px 44px;
+        font-size: 12px;
+        text-transform: uppercase;
+        span{
+            font-weight: 700;
+        }
+        &-items{
+            @include flex_end;
+        }
+        &-item{
+            display: flex;
+            justify-content: space-between;
+            width: 85%;
+            &--img{
+                width: 45px;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

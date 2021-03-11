@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeIT Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/684456a964.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+    <!--Start header-->
+    <header class='header'>
+        <div class="container-xl">
+            <div class="row align-items-center">
+                <div class="col-md-2 header__logo">
+                    <div class="header__logo-main">Code<span>it</span></div>
+                    <div class="header__logo-descr">store</div>
+                </div>
+                <div class="col-md-6 offset-md-2">
+                    <nav class="header__nav">
+                        <ul class="header__nav-lists">
+                            <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">home</a></li>
+                            <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">all brands</a></li>
+                            <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">latest</a></li>
+                            <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">featured</a></li>
+                            <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">about</a></li>
+                            <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">blog</a></li>
+                            <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">Contact </a></li>
+                        </ul>
+                        <div class="header__nav-search"><i class="fas fa-search"></i></div>
+                    </nav>
+                </div>
+                <div class="col-md-2">
+                    <div class="header__shop">
+                        <div class="header__shop-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="header__shop-price"><span>$</span>460.00</div>
+                        <span class='header__shop-items'>2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--End header-->
+
+    <!--Start Navigation Section-->
+    <section class='navigation'>
+        <div class="container-xl">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <div class="navigation__title">My wishlist</div>
+                </div>
+                <div class="col-md-2 offset-md-7">
+                    <div class="navigation__currentpage">
+                        <div class="navigation__currentpage-name">home</div>
+                        <div class="navigation__currentpage-page">My wishlist</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Vavigation Section-->
+
+    <!--Start Catalog Section-->
+    <section class="catalog">
+        <div class="container-xl">
+            <div class="row align-items-center">
+                <!--Start Filter-->
+                <div class="col-md-4 offset-md-8">
+                    <div class="filter">
+                        <form class="filter__form">
+                            <input type='search' name='text' placeholder='enter brand ' class='filter__form-inpt'>
+                            <input type='submit' value='clear list' class='filter__form-btn'>
+                        </form>
+                    </div>
+                </div>
+                <!--End Filter-->
+                <!--Start Products-->
+                <div class="catalogue__products"></div>
+                <ul class="catalogue__pagination"></ul>
+                <!--End Products-->
+            </div>
+        </div>
+    </section>
+    <!--End Catalog Section-->
+
+    <!--Start Slider Section-->
+    <section class="slider">
+        <div class="container-xl">
+            <div class="slider__block">
+                <div class="slider__wrapper">
+                    <div class="slider__item">
+                        <div class="slider__item--img">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="slider__item--text">
+                            <h3>Full warrenty</h3>
+                            <p>Read About Our Warrenty</p>
+                        </div>
+                    </div>
+                    <div class="slider__item">
+                        <div class="slider__item--img">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="slider__item--text">
+                            <h3>express shipping</h3>
+                            <p>Local & International Shipping</p>
+                        </div>
+                    </div>
+                  <div class="slider__item">
+                        <div class="slider__item--img">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <div class="slider__item--text">
+                            <h3>mobile blog</h3>
+                            <p>Discuss Your Favourite Phone</p>
+                        </div>
+                  </div>
+                  <div class="slider__item">
+                        <div class="slider__item--img">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <div class="slider__item--text">
+                            <h3>24/7 Support</h3>
+                            <p>Get Full Support via Chat</p>
+                        </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </section>
+    <!--End Slider Section-->
+
+    <!--Start Footer-->
+    <footer class="footer">
+        <div class="container-xl">
+            <div class="row align-items-center">
+                <div class="footer__subscribe">
+                    <div class="col-md-3">
+                        <div class="footer__subscribe--descr">subscribe to latest smartphones news & deals we offer</div>
+                    </div>
+                    <div class="col-md-5">
+                        <form class='footer__subscribe-form'>
+                            <i class="far fa-envelope email"></i>
+                            <input required type="email" placeholder="Enter Your Email Address ..." class='footer__inpt'>
+                        </form>
+                    </div>
+                    <div class="col-md-4 footer__subscribe-socmed">
+                        <div class="footer__subscribe--social">
+                            <ul class="footer__subscribe--social-items">
+                                <li>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-youtube"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fas fa-rss"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__cards">
+            <div class="container-xl">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        copyright &copy;2015 <span>codeitstore</span> all right reserved.
+                    </div>
+                    <div class="col-md-4 offset-md-4 footer__cards-items">
+                        <div class="footer__cards-item">
+                            <div class="footer__cards-item--img"><img src="img/card5.png" alt="card"></div>
+                            <div class="footer__cards-item--img"><img src="img/card2.png" alt="card"></div>
+                            <div class="footer__cards-item--img"><img src="img/card3.png" alt="card"></div>
+                            <div class="footer__cards-item--img"><img src="img/card4.png" alt="card"></div>
+                            <div class="footer__cards-item--img"><img src="img/card6.png" alt="card"></div>
+                            <div class="footer__cards-item--img"><img src="img/card1.png" alt="card"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </footer>
+    <!--End Footer-->
+    <script src='js/script.js'></script>
+</body>
+</html>

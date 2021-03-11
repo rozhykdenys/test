@@ -1,0 +1,21 @@
+.filter{
+    margin-top: 50px;
+    &__form{
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        &-inpt{
+            @include input;
+            width: 65%;
+            text-transform: uppercase;
+            &::-webkit-search-cancel-button{
+                display: none;
+            }
+        }
+        &-btn{
+            @include input;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    }
+}

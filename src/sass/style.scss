@@ -1,0 +1,21 @@
+@import 'main/variales';
+@import 'main/mixins';
+@import 'main/animation';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color: $dark_color;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@import 'blocks/header';
+@import 'blocks/navigation';
+@import 'blocks/catalog';
+@import 'blocks/filter';
+@import 'blocks/slider';
+@import 'blocks/footer';

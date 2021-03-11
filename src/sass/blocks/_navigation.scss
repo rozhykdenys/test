@@ -1,0 +1,30 @@
+.navigation{
+    @include flex_align;
+    height: 155px;
+    background: url(../img/bck.png) center center/cover no-repeat;
+    &__title{
+        font-size: 26px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    &__currentpage{
+        @include flex_align;
+        justify-content: space-around;
+        font-size: 12px;
+        text-transform: uppercase;
+        &-name{
+            font-weight: 700;
+            position: relative;
+            &::before{
+                @include arrow;
+                top: 40%;
+                transform: rotate(45deg);
+            }
+            &::after{
+                @include arrow;
+                bottom: 40%;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}

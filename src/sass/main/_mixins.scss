@@ -1,0 +1,53 @@
+@mixin flex_align{
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex_end{
+    display: flex;
+    justify-content: flex-end;
+}
+
+@mixin underline{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background: $red_color;
+    left: 0;
+    bottom: 6px;
+}
+
+@mixin arrow{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    width: 5px;
+    height: 1px;
+    background: $dark_color;
+}
+
+@mixin line_shop{
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 4px;
+    background: $dark_color;
+    right: 0;
+}
+
+@mixin slider_line{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: $dark_color;
+}
+
+@mixin input{
+    padding: 8px 20px;
+    border: 2px solid $dark_color;
+    background: #fff;
+    outline: none;
+}

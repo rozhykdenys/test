@@ -1,0 +1,124 @@
+.header{
+    @include flex_align;
+    height: 155px;
+    &__logo{
+        &-main{
+            font-size: 26px;
+            font-weight: 700;
+            color:$red_color;
+            position: relative;
+            ::before{
+                @include underline;
+            }
+            span{
+                text-transform: uppercase;
+                color: $dark_color;
+            }
+        }
+        &-descr{
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+    }
+    &__nav{
+        @include flex_align;
+        &-lists{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 0;
+            padding-left: 0;
+            list-style-type: none;
+            li{
+                position: relative;
+                &:nth-child(2){
+                    position: relative;
+                    margin-right: 15px;
+                    cursor: pointer;
+                   &::before{
+                    content: '';
+                    @include arrow;
+                    right: -9px;
+                    transform: rotate(45deg);
+                   }
+                   &::after{
+                    @include arrow;
+                    transform: rotate(-45deg);
+                   }
+                }
+                a:hover{
+                    color: $red_color;
+                    &::before{
+                        @include underline;
+                        bottom: -9px;
+                        animation: fadeInLeft; 
+                        animation-duration: .5s;
+                    }
+                }
+            }
+        }
+        &--list{
+            position: relative;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $dark_color;
+            transition: all .3s;
+        }
+        &-search{
+            margin-left: 20px;
+            cursor: pointer;
+            transition: all .2s;
+            &:hover{
+                color: $red_color;
+            }
+        }
+    }
+    &__shop{
+        @include flex_align;
+        justify-content: center;
+        position: relative;
+        width: 90%;
+        margin: 0 auto;
+        padding: 3px 0;
+        border: 2px solid $dark_color;
+        border-right: none;
+        cursor: pointer;
+        &::before{
+            @include line_shop;
+            top: 0;
+        }
+        &::after{
+            @include line_shop;
+            bottom: 0;
+        }
+        &-icon{
+            font-size: 25px;
+            color: $red_color;
+        }
+        &-price{
+            font-size: 15px;
+            font-weight: 700;
+            margin-left: 8px;
+            span{
+                font-weight: 400;
+                margin-right: 4px;
+            }
+        }
+        &-items{
+            @include flex_align;
+            justify-content: center;
+            position: absolute;
+            width: 23px;
+            height: 23px;
+            background: $dark_color;
+            color: #fff;
+            font-size: 10px;
+            border-radius: 50px;
+            right: -10px;
+        }
+    }
+}
