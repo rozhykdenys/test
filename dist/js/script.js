@@ -1,3 +1,17 @@
+const checkInput = (function(){
+  const btn = document.querySelector('.filter__form-btn'),
+        inputValue = document.querySelector('.filter__form-inpt');
+
+        inputValue.addEventListener('input', () => {
+          if(inputValue.value.length !== 0){
+            btn.removeAttribute('disabled');
+          }else{
+            btn.setAttribute('disabled', 'disabled');
+          }
+        });
+}());
+
+
 const multiItemSlider = (function () {
   return function (selector, config) {
     
