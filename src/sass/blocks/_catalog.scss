@@ -1,0 +1,83 @@
+.catalogue{
+    &__products{
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        margin-top: 60px;
+        &:nth-child(4n + 4){
+            margin-right: 0;
+        }
+    }
+    &__item{
+        @include flex_align;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 23%;
+        margin-bottom: 50px;
+        padding: 35px 5px 0 5px;
+        border: 2px solid $light__gray;
+        &:not(:nth-child(4n + 4)){
+            margin-right: 2.6%;
+        }
+        &-img{
+            width: 250px;
+            margin-bottom: 35px;
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                bottom: -20px;
+                left: 50%;
+                width: 10px;
+                height: 2px;
+                background: $red_color;
+            }
+            img{
+                width: 100%;
+            }
+        }
+        &-subtitle{
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        &-price{
+            font-size: 16px;
+            font-weight: 700;
+            color: $red_color;
+        }
+        &-shop{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 15px;
+            width: 80px;
+            :hover{
+                background: $red_color;
+                color: #fff;
+                border: 2px solid $red_color;
+                border-bottom: none;
+            }
+        }
+        &-remove{
+            @include product_buttons;
+            border-right: 1px solid $light__gray;
+            transition: all .4s;
+            :hover{
+                border: none;
+            }
+        }
+        &-add{
+            @include product_buttons;
+            border-left: 1px solid $light__gray;
+            transition: all .4s;
+            :hover{
+                border: none;
+            }
+        }
+    }
+    &__pagination{
+        border: 1px solid black;
+        padding: 10px;
+    }
+}

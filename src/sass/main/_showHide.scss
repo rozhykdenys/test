@@ -1,0 +1,12 @@
+.show {
+    display: block;
+    &-pagin {
+        display: block;
+    }
+}
+.hide {
+    display: none;
+    &-pagin {
+        display: none;
+    }
+}

@@ -1,0 +1,54 @@
+  
+{
+    "items": [
+      {
+        "img": "img/iphone.jpeg",
+        "alt": "phone",
+        "title": "iphone 12 pro",
+        "price": "123,11111111"
+      },
+      {
+        "img": "img/iphone.jpeg",
+        "alt": "phone",
+        "title": "iphone 12 pro",
+        "price": "123.00"
+      },
+      
+      {
+        "img": "img/iphone.jpeg",
+        "alt": "phone",
+        "title": "iphone 12 pro",
+        "price": "123.00"
+      },
+      {
+        "img": "img/iphone.jpeg",
+        "alt": "phone",
+        "title": "iphone 12 pro",
+        "price": "123.00"
+      },
+      {
+        "img": "img/iphone.jpeg",
+        "alt": "phone",
+        "title": "iphone 12 pro",
+        "price": "123.00"
+      },
+      {
+        "img": "img/iphone.jpeg",
+        "alt": "phone",
+        "title": "iphone 12 pro",
+        "price": "123.00"
+      },
+      {
+        "img": "img/iphone.jpeg",
+        "alt": "phone",
+        "title": "iphone 12 pro",
+        "price": "123.00"
+      },
+      {
+        "img": "img/iphone.jpeg",
+        "alt": "phone",
+        "title": "iphone 12 pro",
+        "price": "123.00"
+      }
+    ]
+}

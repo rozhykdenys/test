@@ -11,6 +11,56 @@ const checkInput = (function(){
         });
 }());
 
+const makeProducts = (function(){
+  class CardItem {
+    constructor(src, alt, title, price, parent, ...classess){
+      this.src = src;
+      this.alt = alt;
+      this.title = title;
+      this.price = price;
+      this.parent = document.querySelector(parent);
+      this.classess = classess;
+    }
+    render(){
+      const elem = document.createElement('div');
+      elem.classList.add('catalogue__item', 'show');
+  
+      elem.innerHTML = `
+                      <div class="catalogue__item-img"><img src=${this.src} alt=${this.alt}></div>
+                      <h3 class="catalogue__item-subtitle">${this.title}</h3>
+                      <div class="catalogue__item-price"> $${this.price}</div>
+                      <div class="catalogue__item-shop">
+                          <div class="catalogue__item-remove"><i class="fas fa-trash-alt"></i></div>
+                          <div class="catalogue__item-add"><i class="fas fa-shopping-cart"></i></div>
+                      </div>
+                       `
+  
+                      this.parent.append(elem);
+    }
+  }
+  
+  const getItems = async(url) => {
+    const res = await fetch(url);
+  
+      if(!res.ok){
+        throw new Error(`Couldn't fetch ${url}, status: ${res.status}`);
+      }
+  
+    return await res.json();
+  };
+  
+  getItems('js/products.json')
+    .then(data => { console.log(data.items[0])
+      data.items.forEach(({img, alt, title, price}) => {
+       new CardItem(img, alt, title, parseInt(price).toFixed(2), '.catalogue__products').render();
+      });
+    })
+    .then(console.log(document.querySelectorAll('.show')))
+    
+}());
+
+const show = document.querySelectorAll('.show');
+console.log(show)
 
 const multiItemSlider = (function () {
   return function (selector, config) {
