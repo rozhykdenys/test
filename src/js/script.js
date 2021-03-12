@@ -26,13 +26,24 @@ const makeProducts = (function(){
       elem.classList.add('catalogue__item', 'show');
   
       elem.innerHTML = `
-                      <div class="catalogue__item-img"><img src=${this.src} alt=${this.alt}></div>
-                      <h3 class="catalogue__item-subtitle">${this.title}</h3>
-                      <div class="catalogue__item-price"> $${this.price}</div>
-                      <div class="catalogue__item-shop">
-                          <div class="catalogue__item-remove"><i class="fas fa-trash-alt"></i></div>
-                          <div class="catalogue__item-add"><i class="fas fa-shopping-cart"></i></div>
-                      </div>
+                         <div class="catalogue__item-img">
+                              <div class="catalogue__item-picture">
+                                  <img src="${this.src}" alt="${this.alt}">
+                              </div>
+                              <div class="catalogue__item-hiden">
+                                  <div class="button">remove from list</div>
+                              </div>
+                          </div>
+                          <div class="catalogue__item-text">
+                              <div class="catalogue__item-text--info">
+                                  <h3>${this.title}</h3>
+                                  <p>$${this.price}</p>
+                              </div>
+                              <div class="catalogue__item-text--buttons">
+                                  <div class="catalogue__item-text--remove"><i class="fas fa-trash-alt"></i></div>
+                                  <div class="catalogue__item-text--add"><i class="fas fa-shopping-cart"></i></div>
+                              </div>
+                          </div>
                        `
   
                       this.parent.append(elem);

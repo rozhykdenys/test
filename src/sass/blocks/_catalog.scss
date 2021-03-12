@@ -1,83 +1,108 @@
 .catalogue{
     &__products{
-        display: flex;
-        flex-wrap: wrap;
-        position: relative;
-        margin-top: 60px;
-        &:nth-child(4n + 4){
-            margin-right: 0;
-        }
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-top: 60px;
     }
     &__item{
-        @include flex_align;
-        flex-direction: column;
-        justify-content: space-between;
         width: 23%;
-        margin-bottom: 50px;
-        padding: 35px 5px 0 5px;
         border: 2px solid $light__gray;
+        margin-bottom: 50px;
         &:not(:nth-child(4n + 4)){
             margin-right: 2.6%;
         }
         &-img{
-            width: 250px;
-            margin-bottom: 35px;
+            height: 300px;
+            padding: 35px 10px;
             position: relative;
             &::after{
                 content: '';
                 position: absolute;
-                bottom: -20px;
+                bottom: 0;
                 left: 50%;
                 width: 10px;
                 height: 2px;
                 background: $red_color;
+
             }
+        }
+        &-picture{
+            width: 100%;
             img{
                 width: 100%;
             }
         }
-        &-subtitle{
-            font-size: 14px;
-            font-weight: 700;
+        &-hiden{
+            @include flex_align;
+            justify-content: center;
+            position: absolute;
+            width: 100%;
+            height: 300px;
+            left: 0;
+            top: 0;
+        }
+        .active_item{
+            background: rgba(0, 0, 0, .7);
+        }
+        .button{
+            font-size: 12px;
             text-transform: uppercase;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: 7px 17px;
         }
-        &-price{
-            font-size: 16px;
-            font-weight: 700;
-            color: $red_color;
-        }
-        &-shop{
+        &-text{
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-top: 15px;
-            width: 80px;
-            :hover{
-                background: $red_color;
-                color: #fff;
-                border: 2px solid $red_color;
-                border-bottom: none;
+            justify-content: center;
+            flex-direction: column;
+            &--info{
+                margin-top: 30px;
+                text-align: center;
+                h3{
+                    font-size: 14px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                }
+                p{
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: $red_color;
+                    margin-bottom: 0;
+                }
+            }
+            &--active{
+                background: $light__gray;
+            }
+            &--buttons{
+                @include flex_align;
+                justify-content: space-between;
+                margin-top: 20px;
+                width: 80px;
+                :hover{
+                    background: $red_color;
+                    color: #fff;
+                    border: 2px solid $red_color;
+                    border-bottom: none;
+                }
+            }
+            &--remove{
+                @include product_buttons;
+                border-right: 1px solid $light__gray;
+                transition: all .4s;
+                :hover{
+                    border: none;
+                }
+            }
+            &--add{
+                @include product_buttons;
+                border-left: 1px solid $light__gray;
+                transition: all .4s;
+                :hover{
+                    border: none;
+                }
             }
         }
-        &-remove{
-            @include product_buttons;
-            border-right: 1px solid $light__gray;
-            transition: all .4s;
-            :hover{
-                border: none;
-            }
-        }
-        &-add{
-            @include product_buttons;
-            border-left: 1px solid $light__gray;
-            transition: all .4s;
-            :hover{
-                border: none;
-            }
-        }
-    }
-    &__pagination{
-        border: 1px solid black;
-        padding: 10px;
     }
 }
