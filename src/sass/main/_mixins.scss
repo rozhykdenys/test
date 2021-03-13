@@ -61,3 +61,10 @@
     width: 40px;
     cursor: pointer;
     }
+
+    @mixin hover_btn{
+        background: $red_color;
+        color: #fff;
+        border: 2px solid $red_color;
+        border-bottom: none;
+    }

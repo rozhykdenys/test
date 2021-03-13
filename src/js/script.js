@@ -3,13 +3,98 @@ const checkInput = (function(){
         inputValue = document.querySelector('.filter__form-inpt');
 
         inputValue.addEventListener('input', () => {
+
           if(inputValue.value.length !== 0){
             btn.removeAttribute('disabled');
           }else{
             btn.setAttribute('disabled', 'disabled');
           }
         });
+
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          inputValue.value = '';
+          btn.setAttribute('disabled', 'disabled');
+        })
 }());
+
+function pagination(products, allItems){
+    const pagination = document.querySelectorAll('.catalogue__pagination')[0],
+          count = 8;//products on page
+    let pageNum = 1,//page start
+        countPages = Math.ceil(products.length / count),//count of pages
+        liButtons = [];
+    
+    console.log('pages: '+ countPages + ': products length: ' + products.length);
+  
+    //create buttons
+    for (let page of [...document.querySelectorAll(".catalogue__pagination-item")]) {
+      page.remove();
+    }
+  
+    for (let i = 1; i <= countPages; i++) {
+      const li = document.createElement("li");
+      li.classList.add("catalogue__pagination-item");
+      li.innerHTML = i;
+      pagination.appendChild(li);
+      liButtons.push(li);
+    }
+  
+    //fill pages
+  
+    //clear
+    function fillPage(pageNum) {
+      for (let clr1 of [...allItems.children]) {
+        clr1.classList.remove("hide-pagin");
+        clr1.classList.remove("show-pagin");
+      }
+  
+      for(let singleLi of liButtons){
+          if ([...singleLi.classList].includes('active-page')){
+              singleLi.classList.remove('active-page')
+          }
+      }
+  
+      let start = (pageNum - 1) * count,
+          end = start + count;
+  
+          let strNote = [...products].slice(0, start),
+              delNote = [...products].slice(end),
+              notes = [...products].slice(start, end);
+          
+          
+        for (let note of notes) {
+       
+        if (![...note.classList].includes("hide")) {
+            note.classList.remove("hide-pagin");
+            note.classList.add("show-pagin");
+          }
+              }
+          for (let del of delNote) {
+            del.classList.remove("show-pagin");
+            del.classList.add("hide-pagin");
+          }
+          for (let str of strNote) {
+            str.classList.remove("show-pagin");
+            str.classList.add("hide-pagin");
+          }
+          let currentPage = liButtons[pageNum - 1];
+          currentPage.classList.add("active-page");
+     
+    }
+    fillPage(pageNum);
+  
+    //click events
+    for (let li of liButtons) {
+      li.addEventListener("click", () => {
+        pageNum = +li.innerHTML;
+        fillPage(pageNum);
+      });
+    }
+  }
+
+  
 
 const makeProducts = (function(){
   class CardItem {
@@ -26,24 +111,24 @@ const makeProducts = (function(){
       elem.classList.add('catalogue__item', 'show');
   
       elem.innerHTML = `
-                         <div class="catalogue__item-img">
-                              <div class="catalogue__item-picture">
-                                  <img src="${this.src}" alt="${this.alt}">
-                              </div>
-                              <div class="catalogue__item-hiden">
-                                  <div class="button">remove from list</div>
-                              </div>
-                          </div>
-                          <div class="catalogue__item-text">
-                              <div class="catalogue__item-text--info">
-                                  <h3>${this.title}</h3>
-                                  <p>$${this.price}</p>
-                              </div>
-                              <div class="catalogue__item-text--buttons">
-                                  <div class="catalogue__item-text--remove"><i class="fas fa-trash-alt"></i></div>
-                                  <div class="catalogue__item-text--add"><i class="fas fa-shopping-cart"></i></div>
-                              </div>
-                          </div>
+                        <div class="catalogue__item-img">
+                            <div class="catalogue__item-picture">
+                                <img src="${this.src}" alt="${this.alt}">
+                            </div>
+                            <div class="catalogue__item-hiden active_item">
+                                <button class="button data-del="delete" hid">remove from list</button>
+                            </div>
+                        </div>
+                        <div class="catalogue__item-text catalogue__item-text--active">
+                            <div class="catalogue__item-text--info">
+                                <h3 class='title_item'>${this.title}</h3>
+                                <p>$${this.price}</p>
+                            </div>
+                            <div class="catalogue__item-text--buttons">
+                                <button class="catalogue__item-text--remove active_btn data-del="delete""><i class="fas fa-trash-alt"></i></button>
+                                <button class="catalogue__item-text--add active_btn"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
+                        </div>
                        `
   
                       this.parent.append(elem);
@@ -61,36 +146,41 @@ const makeProducts = (function(){
   };
   
   getItems('js/products.json')
-    .then(data => { console.log(data.items[0])
+    .then(data => { 
       data.items.forEach(({img, alt, title, price}) => {
        new CardItem(img, alt, title, parseInt(price).toFixed(2), '.catalogue__products').render();
-      });
-    })
-    .then(console.log(document.querySelectorAll('.show')))
-    
-}());
 
-const show = document.querySelectorAll('.show');
-console.log(show)
+       
+      })
+    })
+    .then(() => {
+       const items = document.querySelectorAll('.show'),
+             productsDOM = document.querySelector('.catalogue__products'),
+             btns = document.querySelectorAll('.button');
+             
+       
+       pagination(items, productsDOM);       
+    })  
+}());
 
 const multiItemSlider = (function () {
   return function (selector, config) {
     
-    const  mainElement = document.querySelector(selector), // основный элемент блока
-           sliderWrapper = mainElement.querySelector('.slider__wrapper'), // обертка для .slider-item
-           sliderItems = mainElement.querySelectorAll('.slider__item'); // элементы (.slider-item)
+    const  mainElement = document.querySelector(selector), // main item 
+           sliderWrapper = mainElement.querySelector('.slider__wrapper'), // wrapper for .slider-item
+           sliderItems = mainElement.querySelectorAll('.slider__item'); // elements (.slider-item)
 
-    let  wrapperWidth = parseFloat(getComputedStyle(sliderWrapper).width), // ширина обёртки
-         itemWidth = parseFloat(getComputedStyle(sliderItems[0]).width), // ширина одного элемента    
-         positionLeftItem = 0, // позиция левого активного элемента
-         transform = 0, // значение транфсофрмации .slider_wrapper
-         step = itemWidth / wrapperWidth * 100, // величина шага (для трансформации)
-         items = [], // массив элементов
+    let  wrapperWidth = parseFloat(getComputedStyle(sliderWrapper).width), // wrapper width
+         itemWidth = parseFloat(getComputedStyle(sliderItems[0]).width), // single width  
+         positionLeftItem = 0, // position of left active element
+         transform = 0, // transformation .slider_wrapper
+         step = itemWidth / wrapperWidth * 100, // step
+         items = [], 
          interval = 0,
          configuration = {
-            isCycling: false, // автоматическая смена слайдов
-            direction: 'right', // направление смены слайдов
-            interval: 5000 // интервал между автоматической сменой слайдов
+            isCycling: false, // automatic slider change
+            direction: 'right', // direction
+            interval: 5000 // inreval
           };
 
     for (let key in config) {
@@ -99,7 +189,6 @@ const multiItemSlider = (function () {
       }
     }
 
-    // наполнение массива _items
     sliderItems.forEach((item, index) => {
       items.push({ item: item, position: index, transform: 0 });
     });
@@ -165,22 +254,22 @@ const multiItemSlider = (function () {
       }, configuration.interval);
     }
 
-    // инициализация
+    // initionalidation
     
     cycle(configuration.direction);
 
     return {
-      right() { // метод right
+      right() { // method right
         transformItem('right');
       },
-      left(){ // метод left
+      left(){ // method left
         transformItem('left');
       },
-      stop() { // метод stop
+      stop() { // method stop
         configuration.isCycling = false;
         clearInterval(interval);
       },
-      cycle() { // метод cycle 
+      cycle() { // method cycle 
         configuration.isCycling = true;
         clearInterval(interval);
         cycle();
