@@ -94,6 +94,12 @@ function pagination(products, allItems){
     }
   }
 
+  function parentNode(buttons){
+    buttons.forEach(item => item.addEventListener('click', function(){
+      console.log(this.parentNode.parentNode.parentNode);
+      this.parentNode.parentNode.parentNode.remove(this);
+    }))
+  }
   
 
 const makeProducts = (function(){
@@ -116,7 +122,7 @@ const makeProducts = (function(){
                                 <img src="${this.src}" alt="${this.alt}">
                             </div>
                             <div class="catalogue__item-hiden active_item">
-                                <button class="button data-del="delete" hid">remove from list</button>
+                                <button class="button">remove from list</button>
                             </div>
                         </div>
                         <div class="catalogue__item-text catalogue__item-text--active">
@@ -125,7 +131,7 @@ const makeProducts = (function(){
                                 <p>$${this.price}</p>
                             </div>
                             <div class="catalogue__item-text--buttons">
-                                <button class="catalogue__item-text--remove active_btn data-del="delete""><i class="fas fa-trash-alt"></i></button>
+                                <button class="catalogue__item-text--remove active_btn""><i class="fas fa-trash-alt"></i></button>
                                 <button class="catalogue__item-text--add active_btn"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -156,11 +162,15 @@ const makeProducts = (function(){
     .then(() => {
        const items = document.querySelectorAll('.show'),
              productsDOM = document.querySelector('.catalogue__products'),
-             btns = document.querySelectorAll('.button');
-             
+             removeFromList = document.querySelectorAll('.button'),
+             removeBtn = document.querySelectorAll('.catalogue__item-text--remove');
        
-       pagination(items, productsDOM);       
+       pagination(items, productsDOM);
+       parentNode(removeFromList);
+       parentNode(removeBtn);  
+
     })  
+
 }());
 
 const multiItemSlider = (function () {

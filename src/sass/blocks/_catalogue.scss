@@ -124,7 +124,6 @@
     }
     &__pagination{
         @include flex_align;
-        justify-content: space-between;
         padding-left: 0;
         width: 90%;
         list-style: none;
@@ -137,6 +136,9 @@
             color: #909090;
             font-weight: 500;
             cursor: pointer;
+            &:not(:nth-child(4n + 4)){
+                margin-right: 10px;
+            }
         }
         .active-page{
             border: 2px solid $dark_color;
