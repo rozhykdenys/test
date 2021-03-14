@@ -1,160 +1,178 @@
 {
   "items": [
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/iphone.jpeg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "iphone ",
+      "price": "899,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/sony.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "sony",
+      "price": "233,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/samsung.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "samsung",
+      "price": "561,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/htc.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "htc",
+      "price": "133,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/iphone.png",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "iphone",
+      "price": "999,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/xiaomi.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "xiaomi",
+      "price": "322,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/samsung.png",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "samsung",
+      "price": "555,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/phone.png",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "iphone",
+      "price": "699,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/iphone.jpeg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "iphone ",
+      "price": "899,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/sony.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "sony",
+      "price": "233,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/samsung.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "samsung",
+      "price": "561,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/htc.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "htc",
+      "price": "133,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/iphone.png",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "iphone",
+      "price": "999,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/xiaomi.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "xiaomi",
+      "price": "322,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/samsung.png",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "samsung",
+      "price": "555,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/phone.png",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "iphone",
+      "price": "699,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/iphone.jpeg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "iphone ",
+      "price": "899,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/sony.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "sony",
+      "price": "233,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/samsung.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "samsung",
+      "price": "561,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/htc.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "htc",
+      "price": "133,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/iphone.png",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "iphone",
+      "price": "999,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/xiaomi.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "xiaomi",
+      "price": "322,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/samsung.png",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "samsung",
+      "price": "555,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/phone.png",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "iphone",
+      "price": "699,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/iphone.jpeg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "iphone ",
+      "price": "899,11111111"
     },
     {
-      "img": "img/iphone.jpeg",
+      "img": "img/phones/sony.jpg",
       "alt": "phone",
-      "title": "iphone 12 pro",
-      "price": "123,11111111"
+      "title": "sony",
+      "price": "233,11111111"
+    },
+    {
+      "img": "img/phones/samsung.jpg",
+      "alt": "phone",
+      "title": "samsung",
+      "price": "561,11111111"
+    },
+    {
+      "img": "img/phones/htc.jpg",
+      "alt": "phone",
+      "title": "htc",
+      "price": "133,11111111"
+    },
+    {
+      "img": "img/phones/samsung.png",
+      "alt": "phone",
+      "title": "samsung",
+      "price": "555,11111111"
     }
   ]
 }

@@ -1,0 +1,398 @@
+@media (max-width: 1200px){
+    .header{
+        &__shop{
+            width: 95%;
+            &-items{
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    .navigation{
+        &__currentpage{
+            font-size: 11px;
+        }
+    }
+    .filter{
+        &__form-inpt{
+            width: 63%;
+        }
+        &__form-btn{
+            padding: 8px 15px;
+        }
+    }
+    .catalogue__pagination-item:not(:nth-child(4n+4)) {
+        margin-right: 4px;
+    }
+    .slider{
+        &__block{
+            padding: 25px;
+        }
+        &__item{
+            &--img{
+                font-size: 25px;
+            }
+            &--text{
+                h3{
+                    font-size: 14px;
+                }
+                p{
+                    font-size: 11px;
+                }
+            }
+        }    
+    }
+    .footer{
+        &__subscribe{
+            &--descr{
+            font-size: 11px;
+            }
+            &-form{
+                width: 90%;
+            }
+            &--social{
+                width: 308px;
+                height: 44px;
+                &-items{
+                    li{
+                        width: 44px;
+                        height: 44px;
+                    }
+                }
+            }
+        }
+        &__inpt{
+            padding: 10px 32px 10px 10px;
+        }
+        &__cards{
+            &-descr{
+                font-size: 10px;
+            }
+            &-item{
+                width: 100%;
+                &--img{
+                    background: #f8f8f8;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 992px){
+    .header{
+        &__nav{
+            &--list{
+                font-size: 10px;
+            }
+        }
+        &__shop{
+            width: 100%;
+            &-icon{
+                font-size: 18px;
+            }
+            &-price{
+                font-size: 12px;
+            }
+            span{
+                font-size: 10px;
+            }
+            &-items{
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+    .navigation{
+        &__title{
+            font-size: 20px;
+        }
+        &__currentpage-name{
+            &::before{
+                content: '';
+                top: 30%;
+            }
+        }
+    }
+    .catalogue{
+        &__products{
+            justify-content: space-between;
+        }
+        &__item{
+            width: 48%;
+            margin-right: 0!important;
+            margin-bottom: 35px;
+            &-picture{
+                width: 80%;
+            }
+        }
+        &__pagination{
+            width: 100%;
+            &-item{
+                width: 25px;
+                height: 25px;
+                &:not(:nth-child(4n+4)) {
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+    .slider{
+        &__item{
+            &--text{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                &::after{
+                    bottom: 0;
+                }
+            }
+        }
+    }
+    .footer{
+        &__inpt{
+            font-size: 8px;
+        }    
+        &__subscribe{
+            &--descr{
+                font-size: 8px;
+            }
+            &--social{
+                width: 233px;
+                height: 31px;
+                &-items{
+                    li{
+                        width: 33px;
+                        height: 33px;
+                    }
+                }
+            }
+        }
+        &__cards{
+            &-descr{
+                font-size: 7px;
+            }
+            &-item--img{
+                width: 30px ;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .header{
+        position: fixed;
+        height: 100px;
+        padding: 0 10px;
+        width: 100%;
+        background-color: #fff;
+        z-index: 10;
+        &__nav{
+            justify-content: flex-end;
+            &-lists{
+                position: fixed;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                top: 0;
+                left: -1000px;
+                width: 80%;
+                height: 100vh;
+                padding: 20px 15px;
+                background: rgba(226, 69, 69, .9);
+                transition: all .6s;
+            }
+            .active_lists{
+                left: 0;
+            }
+            .close{
+                display: block;
+                position: absolute;
+                font-size: 60px;
+                font-weight: 500;
+                color: #fff;
+                transform: rotate(45deg);
+                top: 0;
+                right: 30px;
+            }
+            &--list{
+                color: #fff;
+                font-size: 30px;
+                margin-top: 15px;
+            }
+            &-search{
+                position: absolute;
+                right: 100px;
+            }
+        }
+        &__shop{
+            display: none;
+        }
+    }
+    .hamburger{
+        display: flex;
+    }
+    .navigation{
+        margin-top: 100px;
+        &__title{
+            font-size: 15px;
+        }
+    }
+    .catalogue{
+        &__products{
+            justify-content: center;
+        }
+        &__item{
+            width: 55%;
+            &-picture{
+                width: 70%;
+            }
+        }
+    }
+
+    .slider{
+        &__item{
+            &--img{
+                font-size: 20px;
+            }
+            &--text{
+                h3{
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+    .footer{
+        &__inpt{
+            padding: 5px 32px 5px 10px;
+        }   
+        .email{
+            font-size: 10px;
+        } 
+        &__subscribe{
+            &--descr{
+                font-size: 6px;
+            }
+            &--social{
+                width: 233px;
+                height: 24px;
+                &-items{
+                    li{
+                        font-size: 13px;
+                        width: 40px;
+                        height: 25px;
+                    }
+                }
+            }
+        }
+        &__cards{
+            &-descr{
+                font-size: 5px;
+            }
+            &-item--img{
+                width: 23px;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .header{
+        &__logo{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &__nav{
+            &-lists{
+                width: 65%;
+            }
+            &--list{
+                font-size: 20px;
+            }
+        }
+        .close{
+            
+        }
+    }
+    .navigation{
+        position: relative;
+        padding: 0 10px;
+        &__title{
+            font-size: 16px;
+            width: 150px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &__currentpage{
+            font-size: 8px;
+        }
+    }
+    .catalogue{
+        &__pagination{
+            width: 200px;
+            margin-left: 320px;
+        }
+    }
+    .filter{
+        margin: 50px auto 0 auto;
+    }
+    .slider{
+        &__item{
+            &--img{
+                display: none;
+            }
+        }
+    }
+    .footer{
+        position: relative;
+        &__subscribe{
+            position: relative;
+            &--descr{
+                text-align: center;
+                width: 220px;
+                font-size: 10px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 40px;
+            }
+            &--social{
+                position: absolute;
+                width: 175px;
+                bottom: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        &__inpt{
+            font-size: 12px;
+            position: absolute;
+            width: 250px;
+            top: -12px;
+            right: -50%;
+        }
+        .email{
+            z-index: 10;
+            right: -50px;
+            top: 5px;
+        }
+        &__cards{
+            position: relative;
+            padding: 15px 44px;
+            &-descr{
+                font-size: 4px;
+            }
+            &-item{
+                width: 100px;
+                height: 8px;
+                position: absolute;
+                top: 12px;
+                right: 44px;
+                &--img{
+                    width: 16px;
+                }
+            }
+        }
+    }
+}

@@ -8,10 +8,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+html{
+    overflow-x: hidden;
+}
 body{
     color: $dark_color;
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
 
 @import 'blocks/header';
@@ -20,3 +23,5 @@ body{
 @import 'blocks/filter';
 @import 'blocks/slider';
 @import 'blocks/footer';
+@import 'blocks/hamburger';
+@import 'media/media';

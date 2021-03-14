@@ -13,13 +13,13 @@
 <body>
     <!--Start header-->
     <header class='header'>
-        <div class="container-xl">
+        <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-2 header__logo">
+                <div class="col-sm-4 col-md-2 header__logo">
                     <div class="header__logo-main">Code<span>it</span></div>
                     <div class="header__logo-descr">store</div>
                 </div>
-                <div class="col-md-6 offset-md-2">
+                <div class="col-sm-4 offset-sm-4 col-md-7 offset-md-1 col-xl-6 offset-xl-2">
                     <nav class="header__nav">
                         <ul class="header__nav-lists">
                             <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">home</a></li>
@@ -29,11 +29,17 @@
                             <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">about</a></li>
                             <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">blog</a></li>
                             <li><a href="#" class="animate__animated animate__fadeInLeft header__nav--list">Contact </a></li>
+                            <div class="close">+</div>
                         </ul>
                         <div class="header__nav-search"><i class="fas fa-search"></i></div>
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                     </nav>
                 </div>
-                <div class="col-md-2">
+                <div class="col-2">
                     <div class="header__shop">
                         <div class="header__shop-icon">
                             <i class="fas fa-shopping-bag"></i>
@@ -49,12 +55,12 @@
 
     <!--Start Navigation Section-->
     <section class='navigation'>
-        <div class="container-xl">
+        <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-3">
+                <div class="col-3">
                     <div class="navigation__title">My wishlist</div>
                 </div>
-                <div class="col-md-2 offset-md-7">
+                <div class="col-sm-4 offset-sm-5 col-md-3 offset-md-6 end">
                     <div class="navigation__currentpage">
                         <div class="navigation__currentpage-name">home</div>
                         <div class="navigation__currentpage-page">My wishlist</div>
@@ -67,10 +73,10 @@
 
     <!--Start Catalog Section-->
     <section class="catalog">
-        <div class="container-xl">
+        <div class="container">
             <div class="row align-items-center">
                 <!--Start Filter-->
-                <div class="col-md-4 offset-md-8">
+                <div class="col-md-5 offset-md-7 end">
                     <div class="filter">
                         <form class="filter__form">
                             <input type='search' name='text' placeholder='enter brand ' class='filter__form-inpt'>
@@ -80,10 +86,10 @@
                 </div>
                 <!--End Filter-->
                 <!--Start Products-->
-                <div class="col-md-12">
+                <div class="col-12">
                     <div class="catalogue__products"></div>
                 </div>
-                <div class="col-md-2 offset-md-5 catalogue_center">
+                <div class="col-sm-3 offset-sm-5 col-2 offset-md-5 center">
                     <ul class="catalogue__pagination"></ul>
                 </div>
                 <!--End Products-->
@@ -94,7 +100,7 @@
 
     <!--Start Slider Section-->
     <section class="slider">
-        <div class="container-xl">
+        <div class="container">
             <div class="slider__block">
                 <div class="slider__wrapper">
                     <div class="slider__item">
@@ -141,19 +147,19 @@
 
     <!--Start Footer-->
     <footer class="footer">
-        <div class="container-xl">
+        <div class="container">
             <div class="row align-items-center">
                 <div class="footer__subscribe">
-                    <div class="col-md-3">
+                    <div class="col-3">
                         <div class="footer__subscribe--descr">subscribe to latest smartphones news & deals we offer</div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-5 center">
                         <form class='footer__subscribe-form'>
                             <i class="far fa-envelope email"></i>
                             <input required type="email" placeholder="Enter Your Email Address ..." class='footer__inpt'>
                         </form>
                     </div>
-                    <div class="col-md-4 footer__subscribe-socmed">
+                    <div class="col-4 footer__subscribe-socmed">
                         <div class="footer__subscribe--social">
                             <ul class="footer__subscribe--social-items">
                                 <li>
@@ -184,12 +190,14 @@
             </div>
         </div>
         <div class="footer__cards">
-            <div class="container-xl">
+            <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-4">
-                        copyright &copy;2015 <span>codeitstore</span> all right reserved.
+                    <div class="col-4">
+                        <div class="footer__cards-descr">
+                            copyright &copy;2015 <span>codeitstore</span> all right reserved.
+                        </div>
                     </div>
-                    <div class="col-md-4 offset-md-4 footer__cards-items">
+                    <div class="offset-sm-3 col-4 offset-md-4 footer__cards-items">
                         <div class="footer__cards-item">
                             <div class="footer__cards-item--img"><img src="img/card5.png" alt="card"></div>
                             <div class="footer__cards-item--img"><img src="img/card2.png" alt="card"></div>

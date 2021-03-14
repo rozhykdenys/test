@@ -10,6 +10,7 @@
             @include flex_end;
         }
         &-form{
+            width: 100%;
             position: relative;
             .email{
                 position: absolute;
@@ -35,6 +36,7 @@
                 justify-content: space-around;
                 list-style: none;
                 padding-left: 0;
+                margin-bottom: 0;
                 &:last-child{
                     border-right: 2px solid $light__gray;
                 }
@@ -68,6 +70,10 @@
         text-transform: uppercase;
         outline: none;
         border: 2px solid $light__gray;
+        // &:invalid{
+        //     border-color: $red_color;
+        //     background-color: #FDD;
+        //   }
     }
     &__cards{
         background: $light__gray;

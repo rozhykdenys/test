@@ -125,6 +125,7 @@
     &__pagination{
         @include flex_align;
         padding-left: 0;
+        margin-bottom: 0;
         width: 90%;
         list-style: none;
         &-item{

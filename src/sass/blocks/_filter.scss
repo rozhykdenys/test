@@ -7,6 +7,7 @@
         &-inpt{
             @include input;
             width: 65%;
+            margin-right: 5px;
             text-transform: uppercase;
             &::-webkit-search-cancel-button{
                 display: none;

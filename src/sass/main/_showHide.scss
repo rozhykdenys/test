@@ -10,3 +10,11 @@
         display: none;
     }
 }
+.center{
+    @include flex_align;
+    justify-content: center;
+}
+.end{
+    @include flex_align;
+    justify-content: flex-end;
+}

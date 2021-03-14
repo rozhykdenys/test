@@ -1,24 +1,3 @@
-const checkInput = (function(){
-  const btn = document.querySelector('.filter__form-btn'),
-        inputValue = document.querySelector('.filter__form-inpt');
-
-        inputValue.addEventListener('input', () => {
-
-          if(inputValue.value.length !== 0){
-            btn.removeAttribute('disabled');
-          }else{
-            btn.setAttribute('disabled', 'disabled');
-          }
-        });
-
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-
-          inputValue.value = '';
-          btn.setAttribute('disabled', 'disabled');
-        })
-}());
-
 function pagination(products, allItems){
     const pagination = document.querySelectorAll('.catalogue__pagination')[0],
           count = 8;//products on page
@@ -100,6 +79,42 @@ function pagination(products, allItems){
       this.parentNode.parentNode.parentNode.remove(this);
     }))
   }
+
+  function filter (filter){
+    const btn = document.querySelector('.filter__form-btn'),
+          inputValue = document.querySelector('.filter__form-inpt');
+
+    function makeActive(){
+      filter.forEach(elem => {
+        elem.parentNode.parentNode.parentNode.classList.remove('hide');
+      })
+    }
+
+    inputValue.addEventListener('input', function() {
+      let val = this.value.toLowerCase();
+        if(val != ''){
+          btn.removeAttribute('disabled');
+          filter.forEach(elem => {
+            if(elem.innerText.toLowerCase().search(val) == -1){
+              elem.parentNode.parentNode.parentNode.classList.add('hide');
+            }else{
+              elem.parentNode.parentNode.parentNode.classList.remove('hide');
+            }
+          })
+        }else{
+          btn.setAttribute('disabled', 'disabled');
+          makeActive()
+        }
+    })
+
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          inputValue.value = '';
+          makeActive()
+          btn.setAttribute('disabled', 'disabled');
+        })
+  }
   
 
 const makeProducts = (function(){
@@ -155,7 +170,6 @@ const makeProducts = (function(){
     .then(data => { 
       data.items.forEach(({img, alt, title, price}) => {
        new CardItem(img, alt, title, parseInt(price).toFixed(2), '.catalogue__products').render();
-
        
       })
     })
@@ -163,11 +177,13 @@ const makeProducts = (function(){
        const items = document.querySelectorAll('.show'),
              productsDOM = document.querySelector('.catalogue__products'),
              removeFromList = document.querySelectorAll('.button'),
-             removeBtn = document.querySelectorAll('.catalogue__item-text--remove');
-       
+             removeBtn = document.querySelectorAll('.catalogue__item-text--remove'),
+             title = document.querySelectorAll('.title_item');
+
        pagination(items, productsDOM);
        parentNode(removeFromList);
-       parentNode(removeBtn);  
+       parentNode(removeBtn); 
+       filter(title);
 
     })  
 
@@ -292,3 +308,20 @@ const multiItemSlider = (function () {
 const slider = multiItemSlider('.slider__block', {
   isCycling: true
 })
+
+function humburger(){
+  const hamburger = document.querySelector('.hamburger'),
+        close = document.querySelector('.close'),
+        lists = document.querySelector('.header__nav-lists');
+
+  hamburger.addEventListener('click', () => {
+    lists.classList.add('active_lists');
+  })
+  
+  close.addEventListener('click', () => {
+    lists.classList.remove('active_lists');
+  })
+
+}
+
+humburger()
