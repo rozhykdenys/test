@@ -4,7 +4,7 @@
 <br>1.Bootstrap layout
 <br>2.Icons made by fonts
 <br>3.Auto-scrolling slider
-<br>4.You can delete item by cliking on 2 buttons: at the bottom of the element and when you hover the mouse over the item
+<br>4.You can delete item by clicking on 2 buttons: at the bottom of the element and when you hover the mouse over the item
 <br>5.Pagination
 <br>6.In the initial and cleared state, the button is disabled
 <br>7.You can filter all items
