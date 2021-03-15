@@ -1,6 +1,6 @@
-ONLINE STORE
-
-What did i do:
+#<b>ONLINE STORE</b>
+#
+#What did i do:
 1.Bootstrap layout
 2.Icons made by fonts
 3.Auto-scrolling slider
