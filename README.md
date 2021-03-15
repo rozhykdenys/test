@@ -11,4 +11,4 @@
 <br>8.Responsive layout
 <br>
 <br>Days of developing: 5
-<br>Technologies:<i> JS, SCSS</i>
+<br>Technologies: <i> JS, SCSS</i>
