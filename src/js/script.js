@@ -1,3 +1,77 @@
+//Creating products items
+const makeProducts = (function(){
+  class CardItem {
+    constructor(src, alt, title, price, parent, ...classess){
+      this.src = src;
+      this.alt = alt;
+      this.title = title;
+      this.price = price;
+      this.parent = document.querySelector(parent);
+      this.classess = classess;
+    }
+    render(){
+      const elem = document.createElement('div');
+      elem.classList.add('catalogue__item', 'show');
+  
+      elem.innerHTML = `
+                        <div class="catalogue__item-img">
+                            <div class="catalogue__item-picture">
+                                <img src="${this.src}" alt="${this.alt}">
+                            </div>
+                            <div class="catalogue__item-hiden active_item">
+                                <button class="button">remove from list</button>
+                            </div>
+                        </div>
+                        <div class="catalogue__item-text catalogue__item-text--active">
+                            <div class="catalogue__item-text--info">
+                                <h3 class='title_item'>${this.title}</h3>
+                                <p>$${this.price}</p>
+                            </div>
+                            <div class="catalogue__item-text--buttons">
+                                <button class="catalogue__item-text--remove active_btn""><i class="fas fa-trash-alt"></i></button>
+                                <button class="catalogue__item-text--add active_btn"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
+                        </div>
+                       `
+  
+      this.parent.append(elem);
+    }
+  }
+  
+  const getItems = async(url) => {
+    const res = await fetch(url);
+  
+      if(!res.ok){
+        throw new Error(`Couldn't fetch ${url}, status: ${res.status}`);
+      }
+  
+    return await res.json();
+  };
+  
+  getItems('js/products.json')
+    .then(data => { 
+      data.items.forEach(({img, alt, title, price}) => {
+       new CardItem(img, alt, title, parseInt(price).toFixed(2), '.catalogue__products').render();
+       
+      })
+    })
+    .then(() => {
+       const items = document.querySelectorAll('.show'),
+             productsDOM = document.querySelector('.catalogue__products'),
+             removeFromList = document.querySelectorAll('.button'),
+             removeBtn = document.querySelectorAll('.catalogue__item-text--remove'),
+             title = document.querySelectorAll('.title_item');
+
+       pagination(items, productsDOM);
+       parentNode(removeFromList);
+       parentNode(removeBtn); 
+       filter(title);
+
+    })  
+
+}());
+
+//Creating paginations
 function pagination(products, allItems){
     const pagination = document.querySelectorAll('.catalogue__pagination')[0],
           count = 8;//products on page
@@ -5,7 +79,7 @@ function pagination(products, allItems){
         countPages = Math.ceil(products.length / count),//count of pages
         liButtons = [];
     
-    console.log('pages: '+ countPages + ': products length: ' + products.length);
+        console.log('pages: '+ countPages + ': products length: ' + products.length);
   
     //create buttons
     for (let page of [...document.querySelectorAll(".catalogue__pagination-item")]) {
@@ -21,7 +95,6 @@ function pagination(products, allItems){
     }
   
     //fill pages
-  
     //clear
     function fillPage(pageNum) {
       for (let clr1 of [...allItems.children]) {
@@ -63,7 +136,6 @@ function pagination(products, allItems){
      
     }
     fillPage(pageNum);
-  
     //click events
     for (let li of liButtons) {
       li.addEventListener("click", () => {
@@ -73,6 +145,7 @@ function pagination(products, allItems){
     }
   }
 
+  //Remove buttons
   function parentNode(buttons){
     buttons.forEach(item => item.addEventListener('click', function(){
       console.log(this.parentNode.parentNode.parentNode);
@@ -80,6 +153,7 @@ function pagination(products, allItems){
     }))
   }
 
+  //Items filter
   function filter (filter){
     const btn = document.querySelector('.filter__form-btn'),
           inputValue = document.querySelector('.filter__form-inpt');
@@ -90,226 +164,35 @@ function pagination(products, allItems){
       })
     }
 
-    inputValue.addEventListener('input', function() {
-      let val = this.value.toLowerCase();
-        if(val != ''){
-          btn.removeAttribute('disabled');
-          filter.forEach(elem => {
-            if(elem.innerText.toLowerCase().search(val) == -1){
-              elem.parentNode.parentNode.parentNode.classList.add('hide');
-            }else{
-              elem.parentNode.parentNode.parentNode.classList.remove('hide');
-            }
-          })
-        }else{
-          btn.setAttribute('disabled', 'disabled');
-          makeActive()
-        }
-    })
-
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-
-          inputValue.value = '';
-          makeActive()
-          btn.setAttribute('disabled', 'disabled');
+  inputValue.addEventListener('input', function() {
+    let val = this.value.toLowerCase();
+    
+      if(val != ''){
+        btn.removeAttribute('disabled');
+        filter.forEach(elem => {
+          if(elem.innerText.toLowerCase().search(val) == -1){
+            elem.parentNode.parentNode.parentNode.classList.add('hide');
+          }else{
+            elem.parentNode.parentNode.parentNode.classList.remove('hide');
+          }
         })
-  }
-  
-
-const makeProducts = (function(){
-  class CardItem {
-    constructor(src, alt, title, price, parent, ...classess){
-      this.src = src;
-      this.alt = alt;
-      this.title = title;
-      this.price = price;
-      this.parent = document.querySelector(parent);
-      this.classess = classess;
-    }
-    render(){
-      const elem = document.createElement('div');
-      elem.classList.add('catalogue__item', 'show');
-  
-      elem.innerHTML = `
-                        <div class="catalogue__item-img">
-                            <div class="catalogue__item-picture">
-                                <img src="${this.src}" alt="${this.alt}">
-                            </div>
-                            <div class="catalogue__item-hiden active_item">
-                                <button class="button">remove from list</button>
-                            </div>
-                        </div>
-                        <div class="catalogue__item-text catalogue__item-text--active">
-                            <div class="catalogue__item-text--info">
-                                <h3 class='title_item'>${this.title}</h3>
-                                <p>$${this.price}</p>
-                            </div>
-                            <div class="catalogue__item-text--buttons">
-                                <button class="catalogue__item-text--remove active_btn""><i class="fas fa-trash-alt"></i></button>
-                                <button class="catalogue__item-text--add active_btn"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                       `
-  
-                      this.parent.append(elem);
-    }
-  }
-  
-  const getItems = async(url) => {
-    const res = await fetch(url);
-  
-      if(!res.ok){
-        throw new Error(`Couldn't fetch ${url}, status: ${res.status}`);
+      }else{
+        btn.setAttribute('disabled', 'disabled');
+        makeActive()
       }
-  
-    return await res.json();
-  };
-  
-  getItems('js/products.json')
-    .then(data => { 
-      data.items.forEach(({img, alt, title, price}) => {
-       new CardItem(img, alt, title, parseInt(price).toFixed(2), '.catalogue__products').render();
-       
-      })
+  })
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      inputValue.value = '';
+      makeActive()
+      btn.setAttribute('disabled', 'disabled');
     })
-    .then(() => {
-       const items = document.querySelectorAll('.show'),
-             productsDOM = document.querySelector('.catalogue__products'),
-             removeFromList = document.querySelectorAll('.button'),
-             removeBtn = document.querySelectorAll('.catalogue__item-text--remove'),
-             title = document.querySelectorAll('.title_item');
-
-       pagination(items, productsDOM);
-       parentNode(removeFromList);
-       parentNode(removeBtn); 
-       filter(title);
-
-    })  
-
-}());
-
-const multiItemSlider = (function () {
-  return function (selector, config) {
-    
-    const  mainElement = document.querySelector(selector), // main item 
-           sliderWrapper = mainElement.querySelector('.slider__wrapper'), // wrapper for .slider-item
-           sliderItems = mainElement.querySelectorAll('.slider__item'); // elements (.slider-item)
-
-    let  wrapperWidth = parseFloat(getComputedStyle(sliderWrapper).width), // wrapper width
-         itemWidth = parseFloat(getComputedStyle(sliderItems[0]).width), // single width  
-         positionLeftItem = 0, // position of left active element
-         transform = 0, // transformation .slider_wrapper
-         step = itemWidth / wrapperWidth * 100, // step
-         items = [], 
-         interval = 0,
-         configuration = {
-            isCycling: false, // automatic slider change
-            direction: 'right', // direction
-            interval: 5000 // inreval
-          };
-
-    for (let key in config) {
-      if (key in configuration) {
-        configuration[key] = config[key];
-      }
-    }
-
-    sliderItems.forEach((item, index) => {
-      items.push({ item: item, position: index, transform: 0 });
-    });
-
-    const position = {
-      getItemMin() {
-        let indexItem = 0;
-        items.forEach((item, index) => {
-          if (item.position < items[indexItem].position) {
-            indexItem = index;
-          }
-        });
-        return indexItem;
-      },
-      getItemMax() {
-        let indexItem = 0;
-        items.forEach((item, index) => {
-          if (item.position > items[indexItem].position) {
-            indexItem = index;
-          }
-        });
-        return indexItem;
-      },
-      getMin() {
-        return items[position.getItemMin()].position;
-      },
-      getMax() {
-        return items[position.getItemMax()].position;
-      }
-    }
-
-    function transformItem(direction) {
-      let nextItem;
-      if (direction === 'right') {
-        positionLeftItem++;
-        if ((positionLeftItem + wrapperWidth / itemWidth - 1) > position.getMax()) {
-          nextItem = position.getItemMin();
-          items[nextItem].position = position.getMax() + 1;
-          items[nextItem].transform += items.length * 100;
-          items[nextItem].item.style.transform = 'translateX(' + items[nextItem].transform + '%)';
-        }
-        transform -= step;
-      }
-      if (direction === 'left') {
-        positionLeftItem--;
-        if (positionLeftItem < position.getMin()) {
-          nextItem = position.getItemMax();
-          items[nextItem].position = position.getMin() - 1;
-          items[nextItem].transform -= items.length * 100;
-          items[nextItem].item.style.transform = 'translateX(' + items[nextItem].transform + '%)';
-        }
-        transform += _step;
-      }
-      sliderWrapper.style.transform = 'translateX(' + transform + '%)';
-    }
-
-    function cycle(direction) {
-      if (!configuration.isCycling) {
-        return;
-      }
-      interval = setInterval(() => {
-        transformItem(direction);
-      }, configuration.interval);
-    }
-
-    // initionalidation
-    
-    cycle(configuration.direction);
-
-    return {
-      right() { // method right
-        transformItem('right');
-      },
-      left(){ // method left
-        transformItem('left');
-      },
-      stop() { // method stop
-        configuration.isCycling = false;
-        clearInterval(interval);
-      },
-      cycle() { // method cycle 
-        configuration.isCycling = true;
-        clearInterval(interval);
-        cycle();
-      }
-    }
-
   }
-}());
 
-const slider = multiItemSlider('.slider__block', {
-  isCycling: true
-})
-
-function humburger(){
+//hamburger 
+function hamburger(){
   const hamburger = document.querySelector('.hamburger'),
         close = document.querySelector('.close'),
         lists = document.querySelector('.header__nav-lists');
@@ -324,4 +207,4 @@ function humburger(){
 
 }
 
-humburger()
+hamburger()

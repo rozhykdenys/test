@@ -1,122 +1,4 @@
-function pagination(products, allItems){
-    const pagination = document.querySelectorAll('.catalogue__pagination')[0],
-          count = 8;//products on page
-    let pageNum = 1,//page start
-        countPages = Math.ceil(products.length / count),//count of pages
-        liButtons = [];
-    
-    console.log('pages: '+ countPages + ': products length: ' + products.length);
-  
-    //create buttons
-    for (let page of [...document.querySelectorAll(".catalogue__pagination-item")]) {
-      page.remove();
-    }
-  
-    for (let i = 1; i <= countPages; i++) {
-      const li = document.createElement("li");
-      li.classList.add("catalogue__pagination-item");
-      li.innerHTML = i;
-      pagination.appendChild(li);
-      liButtons.push(li);
-    }
-  
-    //fill pages
-  
-    //clear
-    function fillPage(pageNum) {
-      for (let clr1 of [...allItems.children]) {
-        clr1.classList.remove("hide-pagin");
-        clr1.classList.remove("show-pagin");
-      }
-  
-      for(let singleLi of liButtons){
-          if ([...singleLi.classList].includes('active-page')){
-              singleLi.classList.remove('active-page')
-          }
-      }
-  
-      let start = (pageNum - 1) * count,
-          end = start + count;
-  
-          let strNote = [...products].slice(0, start),
-              delNote = [...products].slice(end),
-              notes = [...products].slice(start, end);
-          
-          
-        for (let note of notes) {
-       
-        if (![...note.classList].includes("hide")) {
-            note.classList.remove("hide-pagin");
-            note.classList.add("show-pagin");
-          }
-              }
-          for (let del of delNote) {
-            del.classList.remove("show-pagin");
-            del.classList.add("hide-pagin");
-          }
-          for (let str of strNote) {
-            str.classList.remove("show-pagin");
-            str.classList.add("hide-pagin");
-          }
-          let currentPage = liButtons[pageNum - 1];
-          currentPage.classList.add("active-page");
-     
-    }
-    fillPage(pageNum);
-  
-    //click events
-    for (let li of liButtons) {
-      li.addEventListener("click", () => {
-        pageNum = +li.innerHTML;
-        fillPage(pageNum);
-      });
-    }
-  }
-
-  function parentNode(buttons){
-    buttons.forEach(item => item.addEventListener('click', function(){
-      console.log(this.parentNode.parentNode.parentNode);
-      this.parentNode.parentNode.parentNode.remove(this);
-    }))
-  }
-
-  function filter (filter){
-    const btn = document.querySelector('.filter__form-btn'),
-          inputValue = document.querySelector('.filter__form-inpt');
-
-    function makeActive(){
-      filter.forEach(elem => {
-        elem.parentNode.parentNode.parentNode.classList.remove('hide');
-      })
-    }
-
-    inputValue.addEventListener('input', function() {
-      let val = this.value.toLowerCase();
-        if(val != ''){
-          btn.removeAttribute('disabled');
-          filter.forEach(elem => {
-            if(elem.innerText.toLowerCase().search(val) == -1){
-              elem.parentNode.parentNode.parentNode.classList.add('hide');
-            }else{
-              elem.parentNode.parentNode.parentNode.classList.remove('hide');
-            }
-          })
-        }else{
-          btn.setAttribute('disabled', 'disabled');
-          makeActive()
-        }
-    })
-
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-
-          inputValue.value = '';
-          makeActive()
-          btn.setAttribute('disabled', 'disabled');
-        })
-  }
-  
-
+//Creating product items
 const makeProducts = (function(){
   class CardItem {
     constructor(src, alt, title, price, parent, ...classess){
@@ -189,127 +71,128 @@ const makeProducts = (function(){
 
 }());
 
-const multiItemSlider = (function () {
-  return function (selector, config) {
+//Creating paginations
+function pagination(products, allItems){
+    const pagination = document.querySelectorAll('.catalogue__pagination')[0],
+          count = 8;//products on page
+    let pageNum = 1,//page start
+        countPages = Math.ceil(products.length / count),//count of pages
+        liButtons = [];
     
-    const  mainElement = document.querySelector(selector), // main item 
-           sliderWrapper = mainElement.querySelector('.slider__wrapper'), // wrapper for .slider-item
-           sliderItems = mainElement.querySelectorAll('.slider__item'); // elements (.slider-item)
-
-    let  wrapperWidth = parseFloat(getComputedStyle(sliderWrapper).width), // wrapper width
-         itemWidth = parseFloat(getComputedStyle(sliderItems[0]).width), // single width  
-         positionLeftItem = 0, // position of left active element
-         transform = 0, // transformation .slider_wrapper
-         step = itemWidth / wrapperWidth * 100, // step
-         items = [], 
-         interval = 0,
-         configuration = {
-            isCycling: false, // automatic slider change
-            direction: 'right', // direction
-            interval: 5000 // inreval
-          };
-
-    for (let key in config) {
-      if (key in configuration) {
-        configuration[key] = config[key];
-      }
+    console.log('pages: '+ countPages + ': products length: ' + products.length);
+  
+    //create buttons
+    for (let page of [...document.querySelectorAll(".catalogue__pagination-item")]) {
+      page.remove();
     }
-
-    sliderItems.forEach((item, index) => {
-      items.push({ item: item, position: index, transform: 0 });
-    });
-
-    const position = {
-      getItemMin() {
-        let indexItem = 0;
-        items.forEach((item, index) => {
-          if (item.position < items[indexItem].position) {
-            indexItem = index;
+  
+    for (let i = 1; i <= countPages; i++) {
+      const li = document.createElement("li");
+      li.classList.add("catalogue__pagination-item");
+      li.innerHTML = i;
+      pagination.appendChild(li);
+      liButtons.push(li);
+    }
+  
+    //fill pages
+    //clear
+    function fillPage(pageNum) {
+      for (let clr1 of [...allItems.children]) {
+        clr1.classList.remove("hide-pagin");
+        clr1.classList.remove("show-pagin");
+      }
+  
+      for(let singleLi of liButtons){
+          if ([...singleLi.classList].includes('active-page')){
+              singleLi.classList.remove('active-page')
           }
-        });
-        return indexItem;
-      },
-      getItemMax() {
-        let indexItem = 0;
-        items.forEach((item, index) => {
-          if (item.position > items[indexItem].position) {
-            indexItem = index;
+      }
+  
+      let start = (pageNum - 1) * count,
+          end = start + count;
+  
+          let strNote = [...products].slice(0, start),
+              delNote = [...products].slice(end),
+              notes = [...products].slice(start, end);
+          
+          
+        for (let note of notes) {
+       
+        if (![...note.classList].includes("hide")) {
+            note.classList.remove("hide-pagin");
+            note.classList.add("show-pagin");
           }
-        });
-        return indexItem;
-      },
-      getMin() {
-        return items[position.getItemMin()].position;
-      },
-      getMax() {
-        return items[position.getItemMax()].position;
-      }
+              }
+          for (let del of delNote) {
+            del.classList.remove("show-pagin");
+            del.classList.add("hide-pagin");
+          }
+          for (let str of strNote) {
+            str.classList.remove("show-pagin");
+            str.classList.add("hide-pagin");
+          }
+          let currentPage = liButtons[pageNum - 1];
+          currentPage.classList.add("active-page");
+     
     }
-
-    function transformItem(direction) {
-      let nextItem;
-      if (direction === 'right') {
-        positionLeftItem++;
-        if ((positionLeftItem + wrapperWidth / itemWidth - 1) > position.getMax()) {
-          nextItem = position.getItemMin();
-          items[nextItem].position = position.getMax() + 1;
-          items[nextItem].transform += items.length * 100;
-          items[nextItem].item.style.transform = 'translateX(' + items[nextItem].transform + '%)';
-        }
-        transform -= step;
-      }
-      if (direction === 'left') {
-        positionLeftItem--;
-        if (positionLeftItem < position.getMin()) {
-          nextItem = position.getItemMax();
-          items[nextItem].position = position.getMin() - 1;
-          items[nextItem].transform -= items.length * 100;
-          items[nextItem].item.style.transform = 'translateX(' + items[nextItem].transform + '%)';
-        }
-        transform += _step;
-      }
-      sliderWrapper.style.transform = 'translateX(' + transform + '%)';
+    fillPage(pageNum);
+    //click events
+    for (let li of liButtons) {
+      li.addEventListener("click", () => {
+        pageNum = +li.innerHTML;
+        fillPage(pageNum);
+      });
     }
-
-    function cycle(direction) {
-      if (!configuration.isCycling) {
-        return;
-      }
-      interval = setInterval(() => {
-        transformItem(direction);
-      }, configuration.interval);
-    }
-
-    // initionalidation
-    
-    cycle(configuration.direction);
-
-    return {
-      right() { // method right
-        transformItem('right');
-      },
-      left(){ // method left
-        transformItem('left');
-      },
-      stop() { // method stop
-        configuration.isCycling = false;
-        clearInterval(interval);
-      },
-      cycle() { // method cycle 
-        configuration.isCycling = true;
-        clearInterval(interval);
-        cycle();
-      }
-    }
-
   }
-}());
 
-const slider = multiItemSlider('.slider__block', {
-  isCycling: true
-})
+  //Remove buttons
+  function parentNode(buttons){
+    buttons.forEach(item => item.addEventListener('click', function(){
+      console.log(this.parentNode.parentNode.parentNode);
+      this.parentNode.parentNode.parentNode.remove(this);
+    }))
+  }
 
-function humburger(){
+  //Items filter
+  function filter (filter){
+    const btn = document.querySelector('.filter__form-btn'),
+          inputValue = document.querySelector('.filter__form-inpt');
+
+    function makeActive(){
+      filter.forEach(elem => {
+        elem.parentNode.parentNode.parentNode.classList.remove('hide');
+      })
+    }
+
+  inputValue.addEventListener('input', function() {
+    let val = this.value.toLowerCase();
+    
+      if(val != ''){
+        btn.removeAttribute('disabled');
+        filter.forEach(elem => {
+          if(elem.innerText.toLowerCase().search(val) == -1){
+            elem.parentNode.parentNode.parentNode.classList.add('hide');
+          }else{
+            elem.parentNode.parentNode.parentNode.classList.remove('hide');
+          }
+        })
+      }else{
+        btn.setAttribute('disabled', 'disabled');
+        makeActive()
+      }
+  })
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      inputValue.value = '';
+      makeActive()
+      btn.setAttribute('disabled', 'disabled');
+    })
+  }
+
+//hamburger 
+function hamburger(){
   const hamburger = document.querySelector('.hamburger'),
         close = document.querySelector('.close'),
         lists = document.querySelector('.header__nav-lists');
@@ -324,4 +207,4 @@ function humburger(){
 
 }
 
-humburger()
+hamburger()
